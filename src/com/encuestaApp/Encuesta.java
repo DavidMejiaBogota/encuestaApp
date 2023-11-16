@@ -1,9 +1,12 @@
 package com.encuestaApp;
+
+import com.encuestaApp.respuestas.Respuesta;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Encuesta {
+public class Encuesta extends ElementoEncuesta{
     //1. Atributos
     private int idEncuesta;
     private String titulo;
@@ -15,7 +18,7 @@ public class Encuesta {
     private List<Pregunta> preguntas; //Lista de preguntas
 
     //2. Constructor
-    public Encuesta(int idEncuesta, String titulo, String descripcion, int cantidadPreguntas, String canalDistribucion, Date fechaInicio, Date fechaFin) {
+    public Encuesta(int idEncuesta, String titulo, String descripcion, int cantidadPreguntas, String canalDistribucion, Date fechaInicio, Date fechaFin, Respuesta respuesta) {
         this.idEncuesta = idEncuesta;
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -32,12 +35,25 @@ public class Encuesta {
         preguntas.remove(pregunta);
     }
 
+    //Lógica para validación de fechas
 
     public void programarEncuesta() {
         //logica para programar la encusta
         System.out.println("Encuesta programada para distribución por: "+  canalDistribucion);
     }
 
+    public void setFechaInicio(Date fechaInicio) {
+        if (fechaFin != null && fechaInicio.after(fechaFin)) {
+            throw new IllegalArgumentException("La fecha de inicio no puede ser posterior a la fecha de fin");
+        }
+        this.fechaInicio = fechaInicio;
+    }
+    public void setFechaFin(Date fechaFin) {
+        if (fechaInicio != null && fechaFin.before(fechaInicio)) {
+            throw new IllegalArgumentException("La fecha fin no puede ser anterior a la fecha de inicio");
+        }
+        this.fechaFin = fechaFin;
+    }
     public void generarReporte (){
         //Lógica para generar un reporte de la encuesta
         System.out.println("Generando repoerte de la encuesta" + titulo);
@@ -90,16 +106,8 @@ public class Encuesta {
         return fechaInicio;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
-
     public Date getFechaFin() {
         return fechaFin;
-    }
-
-    public void setFechaFin(Date fechaFin) {
-        this.fechaFin = fechaFin;
     }
 
     public List<Pregunta> getPreguntas() {
