@@ -12,7 +12,7 @@ public class Encuesta {
     private String canalDistribucion;
     private Date fechaInicio;
     private Date fechaFin;
-    private List<String> preguntas;
+    private List<Pregunta> preguntas; //Lista de preguntas
 
     //2. Constructor
     public Encuesta(int idEncuesta, String titulo, String descripcion, int cantidadPreguntas, String canalDistribucion, Date fechaInicio, Date fechaFin) {
@@ -26,13 +26,12 @@ public class Encuesta {
         this.preguntas = new ArrayList<>();
     }
     //3. Métodos
-    public void agregarPregunta(String pregunta) {
-        preguntas.add(pregunta);
-    }
+    public void agregarPregunta(Pregunta pregunta) {preguntas.add(pregunta);}
 
-    public void eliminarPregunta(String pregunta) {
+    public void eliminarPregunta(Pregunta pregunta) {
         preguntas.remove(pregunta);
     }
+
 
     public void programarEncuesta() {
         //logica para programar la encusta
@@ -46,70 +45,68 @@ public class Encuesta {
 
     //Getters y Setters
 
-    //Getters
+
     public int getIdEncuesta() {
         return idEncuesta;
+    }
+
+    public void setIdEncuesta(int idEncuesta) {
+        this.idEncuesta = idEncuesta;
     }
 
     public String getTitulo() {
         return titulo;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public int getCantidadPreguntas() {
-        return cantidadPreguntas;
-    }
-
-    public String getCanalDistribucion() {
-        return canalDistribucion;
-    }
-
-    public Date getFechaInicio() {
-        return fechaInicio;
-    }
-
-    public Date getFechaFin() {
-        return fechaFin;
-    }
-
-    public List<String> getPreguntas() {
-        return preguntas;
-    }
-
-    //Setters
-
-    public void setIdEncuesta(int idEncuesta) {
-        this.idEncuesta = idEncuesta;
-    }
-
     public void setTitulo(String titulo) {
         this.titulo = titulo;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
     }
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
+    public int getCantidadPreguntas() {
+        return cantidadPreguntas;
+    }
+
     public void setCantidadPreguntas(int cantidadPreguntas) {
         this.cantidadPreguntas = cantidadPreguntas;
+    }
+
+    public String getCanalDistribucion() {
+        return canalDistribucion;
     }
 
     public void setCanalDistribucion(String canalDistribucion) {
         this.canalDistribucion = canalDistribucion;
     }
 
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
     public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
+    }
+
+    public Date getFechaFin() {
+        return fechaFin;
     }
 
     public void setFechaFin(Date fechaFin) {
         this.fechaFin = fechaFin;
     }
 
-    public void setPreguntas(List<String> preguntas) {
+    public List<Pregunta> getPreguntas() {
+        return preguntas;
+    }
+
+    public void setPreguntas(List<Pregunta> preguntas) {
         this.preguntas = preguntas;
     }
 }
