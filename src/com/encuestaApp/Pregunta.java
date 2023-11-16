@@ -1,5 +1,7 @@
 package com.encuestaApp;
 
+import com.encuestaApp.respuestas.Respuesta;
+
 import java.util.ArrayList;
 import java.util.List;
 
